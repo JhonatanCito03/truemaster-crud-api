@@ -32,13 +32,13 @@ class empleadoController extends Controller
     {
         $validator = Validator::make($request->all(),[
         'name' => 'required|max:255',
-        'age' => 'required|max:4',
+        'age' => 'required|max:255',
         'email' => 'required|email|unique:empleado',
         'globalScore' => 'required|max:4',
         'phone' => 'required|max:12',
         'password' => 'required',
         'rol' => 'required|max:255',
-        'message' => 'required|max:255',
+        'id_number' => 'max: 25|unique:empleado',
         'img' => 'required|max:255',
         'region' => 'required|max:255',
         ]);
@@ -60,7 +60,7 @@ class empleadoController extends Controller
             'phone' => $request->phone,
             'password' => $request->password,
             'rol' => $request->rol,
-            'message' => $request->message,
+            'id_number' => $request->id_number,
             'img' => $request->img,
             'region' => $request->region,
         ]);
@@ -136,7 +136,7 @@ class empleadoController extends Controller
         'phone' => 'required|max:12',
         'password' => 'required',
         'rol' => 'required|max:255',
-        'message' => 'required|max:255',
+        'id_number' => 'max: 25|unique:empleado',
         'img' => 'required|max:255',
         'region' => 'required|max:255',
         ]);
@@ -157,10 +157,8 @@ class empleadoController extends Controller
         $empleado->phone = $request->phone;
         $empleado->password = $request->password;
         $empleado->rol = $request->rol;
-        $empleado->message = $request->message;
         $empleado->img = $request->img;
         $empleado->region = $request->region;
-
         $empleado->save();
 
         $data = [
@@ -187,10 +185,10 @@ class empleadoController extends Controller
         'age' => 'max:4',
         'email' => 'email|unique:empleado',
         'globalScore' => 'max:4',
-        'phone' => 'max:12',
+        'phone' => 'max:15',
         'password' => '',
         'rol' => 'max:255',
-        'message' => 'max:255',
+        'id_number' => 'max: 25|unique:empleado',
         'img' => 'max:255',
         'region' => 'max:255',
         ]);

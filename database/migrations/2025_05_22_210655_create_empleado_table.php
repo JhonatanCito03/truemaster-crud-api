@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('password');
             $table->string('rol');
-            $table->string('message');
+            $table->string('id_number');
             $table->string('img');
             $table->string('region');
             $table->timestamps();

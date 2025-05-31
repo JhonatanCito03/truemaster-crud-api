@@ -17,7 +17,7 @@ class Empleado extends Model
         'phone',
         'password',
         'rol',
-        'message',
+        'id_number',
         'img',
         'region',
     ];
