@@ -103,7 +103,7 @@ class empleadoController extends Controller
 
         if(!$empleado){
             $data = [
-                'message' => 'Estudiante no encontrado',
+                'message' => 'Empleado no encontrado',
                 'status' => 404
             ];
             return response()->json($data,404);
@@ -112,7 +112,7 @@ class empleadoController extends Controller
         $empleado -> delete();
 
         $data = [
-            'message' => 'Estudiante eliminado',
+            'message' => 'Empleado eliminado',
             'status' => 200
         ];
         return response()->json($data,200);
@@ -170,7 +170,7 @@ class empleadoController extends Controller
     }
 
     public function updatePartial(Request $request, $id){
-        $empleado = Empleado::find($id);
+        $empleado = Empleado::findOrFail($id);
 
         if(!$empleado){
             $data = [
@@ -182,20 +182,20 @@ class empleadoController extends Controller
 
         $validator = validator::make($request->all(),[
         'name' => 'max:255',
-        'age' => 'max:4',
-        'email' => 'email|unique:empleado',
-        'globalScore' => 'max:4',
+        'age' => '',
+        'email' => 'email|unique:empleado,email,' . $empleado->id,
+        'globalScore' => '',
         'phone' => 'max:15',
         'password' => '',
         'rol' => 'max:255',
-        'id_number' => 'max: 25|unique:empleado',
+        'id_number' => 'max:25|unique:empleado,id_number,' . $empleado->id,
         'img' => 'max:255',
         'region' => 'max:255',
         ]);
 
         if($validator ->fails()){
             $data = [
-                'message' => 'Error en la validacion de los datos',
+                'message' => 'Error en la validacion de los datos del empleado',
                 'errors' => $validator->errors(),
                 'status' => 400
             ];
@@ -211,9 +211,12 @@ class empleadoController extends Controller
         if($request->has('email')){
             $empleado->email = $request->email;
         }
-        if($request->has('globalScore')){
-            $empleado->globalScore = $request->globalScore;
+        if($request->has('id_number')){
+            $empleado->id_number = $request->id_number;
         }
+        /*if($request->has('globalScore')){
+            $empleado->globalScore = $request->globalScore;
+        }*/
         if($request->has('phone')){
             $empleado->phone = $request->phone;
         }
