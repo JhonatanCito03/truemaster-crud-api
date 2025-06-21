@@ -150,9 +150,6 @@ class metamunicipioController extends Controller
     {
         $metamunicipio = Metamunicipio::find($id);
 
-        
-        $before = $metamunicipio;
-
         if(!$metamunicipio){
             $data = [
                 'message' => 'Meta no encontrada',
