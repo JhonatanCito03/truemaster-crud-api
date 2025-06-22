@@ -10,6 +10,8 @@ use App\Http\Controllers\Api\metadptoController;
 use App\Http\Controllers\Api\oficinaController;
 use App\Http\Controllers\Api\municipioController;
 use App\Http\Controllers\Api\departamentoController;
+use App\Http\Controllers\Api\regionController;
+use App\Http\Controllers\Api\paisController;
 
 //empleado
 
@@ -122,3 +124,31 @@ Route::put('/departamento/{id}',[departamentoController::class,'update']);
 Route::patch('/departamento/{id}',[departamentoController::class,'updatePartial']);
 
 Route::delete('/departamento/{id}', [departamentoController::class, 'delete']);
+
+//region
+
+Route::get('/region',[regionController::class, 'index']);
+
+Route::get('/region/{id}',[regionController::class, 'show']);
+
+Route::post('/region', [regionController::class, 'store']);
+
+Route::put('/region/{id}',[regionController::class,'update']);
+
+Route::patch('/region/{id}',[regionController::class,'updatePartial']);
+
+Route::delete('/region/{id}', [regionController::class, 'delete']);
+
+//pais
+
+Route::get('/pais',[paisController::class, 'index']);
+
+Route::get('/pais/{id}',[paisController::class, 'show']);
+
+Route::post('/pais', [paisController::class, 'store']);
+
+Route::put('/pais/{id}',[paisController::class,'update']);
+
+Route::patch('/pais/{id}',[paisController::class,'updatePartial']);
+
+Route::delete('/pais/{id}', [paisController::class, 'delete']);
