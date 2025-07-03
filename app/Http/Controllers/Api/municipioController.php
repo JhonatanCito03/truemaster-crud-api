@@ -70,8 +70,12 @@ class municipioController extends Controller
         }
 
         $validator = Validator::make($request -> all(), [
-            'nombre_municipio' => 'required|unique:municipio',
-            'departamento' => 'required'
+            'nombre_municipio' => 'required|max:150',
+            'codigo_municipio' => 'required|unique:municipio',
+            'poblacion' => 'required',
+            'es_capital' => 'required',
+            'activo' => 'required',
+            'departamento_id' => 'required'
         ]);
 
         if($validator -> fails()){
@@ -85,7 +89,11 @@ class municipioController extends Controller
 
         $municipio = Municipio::create([
             'nombre_municipio' => $request->nombre_municipio,
-            'departamento' => $request->departamento
+            'codigo_municipio' => $request->codigo_municipio,
+            'poblacion' => $request->poblacion,
+            'es_capital' => $request->es_capital,
+            'activo' => $request->activo,
+            'departamento_id' => $request->departamento_id,
         ]);
 
         if(!$municipio){
@@ -138,8 +146,12 @@ class municipioController extends Controller
         }
 
         $validator = Validator::make($request -> all(), [
-            'nombre_municipio' => 'required|unique:municipio',
-            'departamento' => 'required'
+            'nombre_municipio' => 'required|max:150',
+            'codigo_municipio' => 'required|unique:municipio',
+            'poblacion' => 'required',
+            'es_capital' => 'required',
+            'activo' => 'required',
+            'departamento_id' => 'required'
         ]);
 
         if($validator -> fails()){
@@ -152,7 +164,11 @@ class municipioController extends Controller
         }
 
         $municipio -> nombre_municipio = $request -> nombre_municipio;
-        $municipio -> departamento = $request -> departamento;
+        $municipio -> codigo_municipio = $request -> codigo_municipio;
+        $municipio -> poblacion = $request -> poblacion;
+        $municipio -> es_capital = $request -> es_capital;
+        $municipio -> activo = $request -> activo;
+        $municipio -> departamento_id = $request -> departamento_id;
 
         $municipio -> save();
 
@@ -178,8 +194,12 @@ class municipioController extends Controller
         }
 
         $validator = Validator::make($request -> all(), [
-            'nombre_municipio',
-            'departamento'
+            'nombre_municipio' => 'max:150',
+            'codigo_municipio' => 'unique:municipio',
+            'poblacion',
+            'es_capital',
+            'activo',
+            'departamento_id'
         ]);
 
         if($validator -> fails()){
@@ -194,8 +214,20 @@ class municipioController extends Controller
         if($request -> has('nombre_municipio')){
             $municipio -> nombre_municipio = $request -> nombre_municipio;
         }
-        if($request -> has('departamento')){
-            $municipio -> departamento = $request -> departamento;
+        if($request -> has('codigo_municipio')){
+            $municipio -> codigo_municipio = $request -> codigo_municipio;
+        }
+        if($request -> has('poblacion')){
+            $municipio -> poblacion = $request -> poblacion;
+        }
+        if($request -> has('es_capital')){
+            $municipio -> es_capital = $request -> es_capital;
+        }
+        if($request -> has('activo')){
+            $municipio -> activo = $request -> activo;
+        }
+        if($request -> has('departamento_id')){
+            $municipio -> departamento_id = $request -> departamento_id;
         }
 
         $municipio -> save();

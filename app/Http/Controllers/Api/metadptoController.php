@@ -34,8 +34,14 @@ class metadptoController extends Controller
         $metadpto = Metadpto::all();
 
         $validator = Validator::make($request -> all(),[
-            'valor_meta' => 'required',
-            'fecha_inicio' => 'required'
+        'titulo_meta' => 'required|max:100',
+        'descripcion_meta' => 'required',
+        'valor_objetivo' => 'required',
+        'unidad' => 'required',
+        'fecha_inicio' => 'required',
+        'fecha_fin' => 'required',
+        'activo' => 'required',
+        'departamento_id' => 'required'
         ]);
 
         if($validator -> fails()){
@@ -48,8 +54,14 @@ class metadptoController extends Controller
         }
 
         $metadpto = Metadpto::create([
-            'valor_meta' => $request->valor_meta,
-            'fecha_inicio' => $request -> fecha_inicio
+            'titulo_meta' => $request->titulo_meta,
+            'descripcion_meta' => $request -> descripcion_meta,
+            'valor_objetivo' => $request -> valor_objetivo,
+            'unidad' => $request -> unidad,
+            'fecha_inicio' => $request -> fecha_inicio,
+            'fecha_fin' => $request -> fecha_fin,
+            'activo' => $request -> activo,
+            'departamento_id' => $request -> departamento_id,
         ]);
         
         if(!$metadpto){
@@ -101,8 +113,14 @@ class metadptoController extends Controller
         }
 
         $validator = Validator::make($request -> all(),[
-            'valor_meta' => 'required',
-            'fecha_inicio' => 'required'
+        'titulo_meta' => 'required|max:100',
+        'descripcion_meta' => 'required',
+        'valor_objetivo' => 'required',
+        'unidad' => 'required',
+        'fecha_inicio' => 'required',
+        'fecha_fin' => 'required',
+        'activo' => 'required',
+        'departamento_id' => 'required'
         ]);
 
         if($validator -> fails()){
@@ -114,8 +132,14 @@ class metadptoController extends Controller
             return response()->json($data,404);
         }
 
-        $metadpto->valor_meta = $request->valor_meta;
+        $metadpto->titulo_meta = $request->titulo_meta;
+        $metadpto->descripcion_meta = $request->descripcion_meta;
+        $metadpto->valor_objetivo = $request->valor_objetivo;
+        $metadpto->unidad = $request->unidad;
         $metadpto->fecha_inicio = $request->fecha_inicio;
+        $metadpto->fecha_fin = $request->fecha_fin;
+        $metadpto->activo = $request->activo;
+        $metadpto->departamento_id = $request->departamento_id;
 
         $metadpto->save();
 
@@ -140,8 +164,14 @@ class metadptoController extends Controller
         }
 
         $validator = Validator::make($request -> all(),[
-            'valor_meta',
-            'fecha_inicio'
+        'titulo_meta' => 'required|max:100',
+        'descripcion_meta' => 'required',
+        'valor_objetivo' => 'required',
+        'unidad' => 'required',
+        'fecha_inicio' => 'required',
+        'fecha_fin' => 'required',
+        'activo' => 'required',
+        'departamento_id' => 'required'
         ]);
 
         if($validator -> fails()){
@@ -153,11 +183,29 @@ class metadptoController extends Controller
             return response()->json($data,404);
         }
 
-        if($request->has('valor_meta')){
-            $metadpto->valor_meta = $request->valor_meta;
+        if($request->has('titulo_meta')){
+            $metadpto->titulo_meta = $request->titulo_meta;
+        }
+        if($request->has('descripcion_meta')){
+            $metadpto->descripcion_meta = $request->descripcion_meta;
+        }
+        if($request->has('valor_objetivo')){
+            $metadpto->valor_objetivo = $request->valor_objetivo;
+        }
+        if($request->has('unidad')){
+            $metadpto->unidad = $request->unidad;
         }
         if($request->has('fecha_inicio')){
             $metadpto->fecha_inicio = $request->fecha_inicio;
+        }
+        if($request->has('fecha_fin')){
+            $metadpto->fecha_fin = $request->fecha_fin;
+        }
+        if($request->has('activo')){
+            $metadpto->activo = $request->activo;
+        }
+        if($request->has('departamento_id')){
+            $metadpto->departamento_id = $request->departamento_id;
         }
 
         $metadpto->save();

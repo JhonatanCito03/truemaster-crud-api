@@ -33,8 +33,14 @@ class metamunicipioController extends Controller
     {
         $metamunicipio = Metamunicipio::all();
         $validator = Validator::make($request -> all(), [
-        'valor_meta' => 'required',
-        'fecha_inicio' => 'required'
+        'titulo_meta' => 'required|max:100',
+        'descripcion_meta' => 'required',
+        'valor_objetivo' => 'required',
+        'unidad' => 'required',
+        'fecha_inicio' => 'required',
+        'fecha_fin' => 'required',
+        'activo' => 'required',
+        'municipio_id' => 'required',
         ]);
 
         if($validator -> fails()){
@@ -47,8 +53,14 @@ class metamunicipioController extends Controller
         }
 
         $metamunicipio = Metamunicipio::create([
-        'valor_meta' => $request -> valor_meta,
-        'fecha_inicio' => $request -> fecha_inicio
+            'titulo_meta' => $request->titulo_meta,
+            'descripcion_meta' => $request -> descripcion_meta,
+            'valor_objetivo' => $request -> valor_objetivo,
+            'unidad' => $request -> unidad,
+            'fecha_inicio' => $request -> fecha_inicio,
+            'fecha_fin' => $request -> fecha_fin,
+            'activo' => $request -> activo,
+            'departamento_id' => $request -> departamento_id,
         ]);
 
         if(!$metamunicipio){
@@ -100,8 +112,14 @@ class metamunicipioController extends Controller
         }
 
         $validator = Validator::make($request -> all(), [
-            'valor_meta' => 'required',
-            'fecha_inicio' => 'required'
+        'titulo_meta' => 'required|max:100',
+        'descripcion_meta' => 'required',
+        'valor_objetivo' => 'required',
+        'unidad' => 'required',
+        'fecha_inicio' => 'required',
+        'fecha_fin' => 'required',
+        'activo' => 'required',
+        'municipio_id' => 'required',
         ]);
 
         if($validator -> fails()){
@@ -112,8 +130,14 @@ class metamunicipioController extends Controller
             return response()->json($data,404);
         }
 
-        $metamunicipio -> valor_meta = $request->valor_meta;
-        $metamunicipio -> fecha_inicio = $request->fecha_inicio;
+        $metadpto->titulo_meta = $request->titulo_meta;
+        $metadpto->descripcion_meta = $request->descripcion_meta;
+        $metadpto->valor_objetivo = $request->valor_objetivo;
+        $metadpto->unidad = $request->unidad;
+        $metadpto->fecha_inicio = $request->fecha_inicio;
+        $metadpto->fecha_fin = $request->fecha_fin;
+        $metadpto->activo = $request->activo;
+        $metadpto->municipio_id = $request->municipio_id;
 
         $metamunicipio->save();
 
@@ -160,8 +184,14 @@ class metamunicipioController extends Controller
 
 
         $validator = Validator::make($request -> all(), [
-            'valor_meta',
-            'fecha_inicio'
+        'titulo_meta',
+        'descripcion_meta',
+        'valor_objetivo',
+        'unidad',
+        'fecha_inicio',
+        'fecha_fin',
+        'activo',
+        'municipio_id'
         ]);
 
         if($validator->fails()){
@@ -172,11 +202,29 @@ class metamunicipioController extends Controller
             return response()->json($data,404);
         }
 
-        if($request -> has('valor_meta')){
-            $metamunicipio -> valor_meta = $request->valor_meta;
+        if($request->has('titulo_meta')){
+            $metadpto->titulo_meta = $request->titulo_meta;
         }
-        if($request -> has('fecha_inicio')){
-            $metamunicipio -> fecha_inicio = $request->fecha_inicio;
+        if($request->has('descripcion_meta')){
+            $metadpto->descripcion_meta = $request->descripcion_meta;
+        }
+        if($request->has('valor_objetivo')){
+            $metadpto->valor_objetivo = $request->valor_objetivo;
+        }
+        if($request->has('unidad')){
+            $metadpto->unidad = $request->unidad;
+        }
+        if($request->has('fecha_inicio')){
+            $metadpto->fecha_inicio = $request->fecha_inicio;
+        }
+        if($request->has('fecha_fin')){
+            $metadpto->fecha_fin = $request->fecha_fin;
+        }
+        if($request->has('activo')){
+            $metadpto->activo = $request->activo;
+        }
+        if($request->has('municipio_id')){
+            $metadpto->municipio_id = $request->municipio_id;
         }
 
         $metamunicipio->save();

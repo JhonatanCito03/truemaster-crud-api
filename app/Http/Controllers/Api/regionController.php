@@ -60,8 +60,13 @@ class regionController extends Controller
         $region = Region::all();
 
         $validator = Validator::make($request -> all(),[
-            'nombre_region' => 'required|unique:region',
-            'zona' => 'required'
+            'nombre_region' => 'required|max:150',
+            'numero_region' => 'required|unique:region',
+            'zona' => 'required',
+            'codigo_region' => 'required',
+            'decripcion' => 'required',
+            'activo' => 'required',
+            'pais_id' => 'required'
         ]);
 
         if($validator -> fails()){
@@ -74,8 +79,14 @@ class regionController extends Controller
         }
 
         $region = Region::create([
+            //nuevos datos
             'nombre_region' => $request -> nombre_region,
-            'zona' => $request -> zona
+            'numero_region' => $request -> numero_region,
+            'zona' => $request -> zona,
+            'codigo_region' => $request -> codigo_region,
+            'decripcion' => $request -> decripcion,
+            'activo' => $request -> activo,
+            'pais_id' => $request -> pais_id
         ]);
 
         if(!$region){
@@ -105,10 +116,15 @@ class regionController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'nombre_region' => 'required|unique:region,nombre_region,' . $id,
-            'zona' => 'required'
+            //esta parte es un poco mas compleja, por lo que se requiere mas investigacion
+            'nombre_region' => 'required|max:150',
+            'numero_region' => 'required|unique:region,numero_region,' . $id,
+            'zona' => 'required',
+            'codigo_region' => 'required',
+            'decripcion' => 'required',
+            'activo' => 'required',
+            'pais_id' => 'required'
         ]);
-
         if ($validator->fails()) {
             return response()->json([
                 'message' => 'Error en la validación de los datos',
@@ -117,8 +133,13 @@ class regionController extends Controller
             ], 400);
         }
 
-        $region->nombre_region = $request->nombre_region;
-        $region->zona = $request->zona;
+        $region->nombre_region = $request -> nombre_region;
+        $region -> numero_region = $request -> numero_region;
+        $region -> zona = $request -> zona;
+        $region -> codigo_region = $request -> codigo_region;
+        $region -> decripcion = $request -> decripcion;
+        $region -> activo = $request -> activo;
+        $region -> pais_id = $request -> pais_id;
         $region->save();
 
         return response()->json([
@@ -141,8 +162,14 @@ class regionController extends Controller
         }
 
         $validator = Validator::make($request -> all(), [
-            'nombre_region' => 'unique:region,nombre_region,' . $id,
+             //esta parte es un poco mas compleja, por lo que se requiere mas investigacion
+            'nombre_region' => 'max:150',
+            'numero_region' => 'unique:region,numero_region,' . $id,
             'zona',
+            'codigo_region',
+            'decripcion',
+            'activo',
+            'pais_id'
         ]);
 
         if($validator -> fails()){
@@ -155,11 +182,25 @@ class regionController extends Controller
         }
 
         if($request -> has('nombre_region')){
-            $region -> nombre_region = $request -> nombre_region;
+            $region->nombre_region = $request -> nombre_region;
         }
-
+        if($request -> has('numero_region')){
+            $region -> numero_region = $request -> numero_region;
+        }
         if($request -> has('zona')){
             $region -> zona = $request -> zona;
+        }
+        if($request -> has('codigo_region')){
+            $region -> codigo_region = $request -> codigo_region;
+        }
+        if($request -> has('descripcion')){
+            $region -> descripcion = $request -> descripcion;
+        }
+        if($request -> has('activo')){
+            $region -> activo = $request -> activo;
+        }
+        if($request -> has('pais_id')){
+            $region -> pais_id = $request -> pais_id;
         }
         $region -> save();
 

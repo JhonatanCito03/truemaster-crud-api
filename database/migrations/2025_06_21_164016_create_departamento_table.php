@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('departamento', function (Blueprint $table) {
             $table->id();
-            $table -> string('nombre');
-            $table -> string('region');
+            $table -> string('nombre_departamento',150);
+            $table -> string('codigo_departamento',10)->unique();
+            $table -> bigInteger('poblacion') -> nullable();
+            $table->unsignedBigInteger('region_id');
+            $table->foreign('region_id')->references('id')->on('region')->onDelete('cascade');
+            $table -> boolean('activo') -> default(true);
             $table->timestamps();
         });
     }

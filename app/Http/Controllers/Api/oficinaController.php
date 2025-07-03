@@ -40,8 +40,15 @@ class oficinaController extends Controller
         $oficina = Oficina::all();
 
         $validator = Validator::make($request -> all(), [
-            'nombre_oficina' => 'required|unique:oficina',
-            'municipio' => 'required'
+        'nombre_oficina' => 'required|max:150',
+        'codigo_oficina' => 'required|max:10',
+        'direccion' => 'required|max:250',
+        'telefono' => 'required|integer|min:6|max:20',
+        'email_contacto' => 'required|email',
+        'horaro_atencion' => 'required',
+        'activo' => 'required',
+        'responsable_id' => 'required|unique:oficina',
+        'municipio_id' => 'required'
         ]);
 
         if($validator ->fails()){
@@ -55,7 +62,14 @@ class oficinaController extends Controller
 
         $oficina = Oficina::create([
             'nombre_oficina' => $request -> nombre_oficina,
-            'municipio' => $request -> municipio
+            'codigo_oficina' => $request -> codigo_oficina,
+            'direccion' => $request -> direccion,
+            'telefono' => $request -> telefono,
+            'email_contacto' => $request -> email_contacto,
+            'horaro_atencion' => $request -> horaro_atencion,
+            'activo' => $request -> activo,
+            'responsable_id' => $request -> responsable_id,
+            'municipio_id' => $request -> municipio_id,
         ]);
 
         if(!$oficina){
@@ -125,8 +139,15 @@ class oficinaController extends Controller
         }
 
         $validator = Validator::make($request -> all(), [
-            'nombre_oficina' => 'required',
-            'municipio' => 'required'
+        'nombre_oficina' => 'required|max:150',
+        'codigo_oficina' => 'required|max:10',
+        'direccion' => 'required|max:250',
+        'telefono' => 'required|integer|min:6|max:20',
+        'email_contacto' => 'required|email',
+        'horaro_atencion' => 'required',
+        'activo' => 'required',
+        'responsable_id' => 'required|unique:oficina',
+        'municipio_id' => 'required'
         ]);
 
         if($validator -> fails()){
@@ -139,7 +160,14 @@ class oficinaController extends Controller
         }
 
         $oficina -> nombre_oficina = $request -> nombre_oficina;
-        $oficina -> municipio = $request -> municipio;
+        $oficina -> codigo_oficina = $request -> codigo_oficina;
+        $oficina -> direccion = $request -> direccion;
+        $oficina -> telefono = $request -> telefono;
+        $oficina -> email_contacto = $request -> email_contacto;
+        $oficina -> horaro_atencion = $request -> horaro_atencion;
+        $oficina -> activo = $request -> activo;
+        $oficina -> responsable_id = $request -> responsable_id;
+        $oficina -> municipio_id = $request -> municipio_id;
 
         $oficina -> save();
 
@@ -163,8 +191,15 @@ class oficinaController extends Controller
         }
 
         $validator = Validator::make($request -> all(), [
-            'nombre_oficina',
-            'municipio'
+        'nombre_oficina',
+        'codigo_oficina',
+        'direccion',
+        'telefono',
+        'email_contacto' => 'email',
+        'horaro_atencion',
+        'activo',
+        'responsable_id',
+        'municipio_id' 
         ]);
 
         if($validator -> fails()){
@@ -180,8 +215,29 @@ class oficinaController extends Controller
             $oficina -> nombre_oficina = $request -> nombre_oficina;
         }
         
-        if($request -> has('municipio')){
-            $oficina -> municipio = $request -> municipio;
+        if($request -> has('codigo_oficina')){
+            $oficina -> codigo_oficina = $request -> codigo_oficina;
+        }
+        if($request -> has('direccion')){
+            $oficina -> direccion = $request -> direccion;
+        }
+        if($request -> has('telefono')){
+            $oficina -> telefono = $request -> telefono;
+        }
+        if($request -> has('email_contacto')){
+            $oficina -> email_contacto = $request -> email_contacto;
+        }
+        if($request -> has('horaro_atencion')){
+            $oficina -> horaro_atencion = $request -> horaro_atencion;
+        }
+        if($request -> has('activo')){
+            $oficina -> activo = $request -> activo;
+        }
+        if($request -> has('responsable_id')){
+            $oficina -> responsable_id = $request -> responsable_id;
+        }
+        if($request -> has('municipio_id')){
+            $oficina -> municipio_id = $request -> municipio_id;
         }
         
         $oficina -> save();

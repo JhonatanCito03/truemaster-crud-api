@@ -13,6 +13,10 @@ class Pais extends Model
 
     protected $fillable = [
         'nombre_pais',
-        'region'
+        'codigo_iso',
+        'prefijo_telefonico',
+        'moneda',
+        'idioma_principal',
+        'activo'
     ];
 }

@@ -14,6 +14,10 @@ class Municipio extends Model
 
     protected $fillable = [
         'nombre_municipio',
-        'departamento'
+        'codigo_municipio',
+        'poblacion',
+        'es_capital',
+        'activo',
+        'departamento_id'
     ];
 }

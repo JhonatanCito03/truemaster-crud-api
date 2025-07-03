@@ -12,7 +12,10 @@ class Departamento extends Model
     protected $table = 'departamento';
 
     protected $fillable = [
-        'nombre',
-        'region'
+        'nombre_departamento',
+        'codigo_departamento',
+        'poblacion',
+        'region_id',
+        'activo'
     ];
 }

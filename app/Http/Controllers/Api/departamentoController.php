@@ -61,8 +61,11 @@ class departamentoController extends Controller
         }
 
         $validator = Validator::make($request -> all(),[
-            'nombre' => 'required|unique:departamento',
-            'region' => 'required'
+            'nombre_departamento' => 'required',
+            'codigo_departamento' => 'required|unique:departamento',
+            'poblacion',
+            'region_id' => 'required',
+            'activo' => 'required'
         ]);
 
         if($validator -> fails()){
@@ -75,8 +78,11 @@ class departamentoController extends Controller
         }
 
         $departamento = Departamento::create([
-            'nombre' => $request->nombre,
-            'region' => $request->region
+            'nombre_departamento' => $request->nombre_departamento,
+            'codigo_departamento' => $request->codigo_departamento,
+            'poblacion' => $request->poblacion,
+            'region_id' => $request->region_id,
+            'activo' => $request->activo
         ]);
 
         if(!$departamento){
@@ -129,8 +135,11 @@ class departamentoController extends Controller
         }
 
         $validator = Validator::make($request -> all(), [
-            'nombre' => 'required|unique:departamento',
-            'region' => 'required'
+            'nombre_departamento' => 'required',
+            'codigo_departamento' => 'required|unique:departamento',
+            'poblacion',
+            'region_id' => 'required',
+            'activo' => 'required'
         ]);
 
         if($validator -> fails()){
@@ -142,8 +151,11 @@ class departamentoController extends Controller
             return response() -> json($data, 400);
         }
 
-        $departamento -> nombre = $request -> nombre;
-        $departamento -> region = $request -> region;
+        $departamento -> nombre_departamento = $request -> nombre_departamento;
+        $departamento -> codigo_departamento = $request -> codigo_departamento;
+        $departamento -> poblacion = $request -> poblacion;
+        $departamento -> region_id = $request -> region_id;
+        $departamento -> activo = $request -> activo;
 
         $departamento -> save();
 
@@ -169,8 +181,11 @@ class departamentoController extends Controller
         }
 
         $validator = Validator::make($request -> all(), [
-            'nombre' => 'unique:departamento',
-            'region'
+            'nombre_departamento',
+            'codigo_departamento' => 'unique:departamento',
+            'poblacion',
+            'region_id',
+            'activo'
         ]);
 
         if($validator -> fails()){
@@ -182,12 +197,21 @@ class departamentoController extends Controller
             return response() -> json($data, 400);
         }
 
-        if($request -> has('nombre')){
-            $departamento -> nombre = $request -> nombre;
+        if($request -> has('nombre_departamento')){
+            $departamento -> nombre_departamento = $request -> nombre_departamento;
         }
 
-        if($request -> has('region')){
-            $departamento -> region = $request -> region;
+        if($request -> has('codigo_departamento')){
+            $departamento -> codigo_departamento = $request -> codigo_departamento;
+        }
+        if($request -> has('poblacion')){
+            $departamento -> poblacion = $request -> poblacion;
+        }
+        if($request -> has('region_id')){
+            $departamento -> region_id = $request -> region_id;
+        }
+        if($request -> has('activo')){
+            $departamento -> activo = $request -> activo;
         }
 
         $departamento -> save();

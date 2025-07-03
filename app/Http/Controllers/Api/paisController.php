@@ -54,8 +54,12 @@ class paisController extends Controller
         $pais = Pais::all();
 
         $validator = Validator::make($request -> all(),[
-            'nombre_pais' => 'required|unique:pais,nombre_pais',
-            'region' => 'required'
+            'nombre_pais' => 'required|max:150',
+            'codigo_iso' => 'required|unique:pais',
+            'prefijo_telefonico' => 'required|unique:pais',
+            'moneda' => 'required',
+            'idioma_principal' => 'required',
+            'activo' => 'required'
         ]);
 
         if($validator -> fails()){
@@ -69,7 +73,11 @@ class paisController extends Controller
 
         $pais = Pais::create([
             'nombre_pais' => $request -> nombre_pais,
-            'region' => $request -> region
+            'codigo_iso' => $request -> codigo_iso,
+            'prefijo_telefonico' => $request -> prefijo_telefonico,
+            'moneda' => $request -> moneda,
+            'idioma_principal' => $request -> idioma_principal,
+            'activo' => $request -> activo
         ]);
 
         if(!$pais){
@@ -102,7 +110,11 @@ class paisController extends Controller
 
         $validator = Validator::make($request -> all(),[
             'nombre_pais' => 'required|unique:pais,nombre_pais,' . $id,
-            'region' => 'required'
+            'codigo_iso' => 'required|unique:pais',
+            'prefijo_telefonico' => 'required|unique:pais',
+            'moneda' => 'required',
+            'idioma_principal' => 'required',
+            'activo' => 'required'
         ]);
 
         if($validator -> fails()){
@@ -114,11 +126,15 @@ class paisController extends Controller
             return response() -> json($data,404);
         }
         $pais -> nombre_pais = $request -> nombre_pais;
-        $pais -> region = $request -> region;
+        $pais -> codigo_iso = $request -> codigo_iso;
+        $pais -> prefijo_telefonico = $request -> prefijo_telefonico;
+        $pais -> moneda = $request -> moneda;
+        $pais -> idioma_principal = $request -> idioma_principal;
+        $pais -> activo = $request -> activo;
         $pais -> save();
 
         $data = [
-            'message' => 'Pais actaulizado',
+            'message' => 'Pais actualizado',
             'data' => $pais,
             'status' => 200
         ];
@@ -139,7 +155,11 @@ class paisController extends Controller
 
         $validator = Validator::make($request -> all(),[
             'nombre_pais' => 'unique:pais,nombre_pais,' . $id,
-            'region'
+            'codigo_iso' => 'unique:pais',
+            'prefijo_telefonico' => 'unique:pais',
+            'moneda',
+            'idioma_principal',
+            'activo'
         ]);
 
         if($validator -> fails()){
@@ -155,15 +175,27 @@ class paisController extends Controller
             $pais -> nombre_pais = $request -> nombre_pais;
         }
 
-        if($request -> has('region')){
-            $pais -> region = $request -> region;
+        if($request -> has('codigo_iso')){
+            $pais -> codigo_iso = $request -> codigo_iso;
+        }
+        if($request -> has('prefijo_telefonico')){
+            $pais -> prefijo_telefonico = $request -> prefijo_telefonico;
+        }
+        if($request -> has('moneda')){
+            $pais -> moneda = $request -> moneda;
+        }
+        if($request -> has('idioma_principal')){
+            $pais -> idioma_principal = $request -> idioma_principal;
+        }
+        if($request -> has('activo')){
+            $pais -> activo = $request -> activo;
         }
 
 
         $pais -> save();
 
         $data = [
-            'message' => 'Pais actaulizado',
+            'message' => 'Pais actaulizado P',
             'data' => $pais,
             'status' => 200
         ];

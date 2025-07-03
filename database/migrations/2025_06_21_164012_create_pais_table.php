@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('pais', function (Blueprint $table) {
             $table->id();
-            $table -> string('nombre_pais');
-            $table -> string('region');
+            $table -> string('nombre_pais',150);
+            $table->string('codigo_iso',15) -> unique(); // COL,MX
+            $table->string('prefijo_telefonico',7);
+            $table->enum('moneda', ['COP', 'MXP', 'PEN', 'USD', 'EUR', 'SRA', 'CAD','CLP']) -> default('USD');
+            $table -> string('idioma_principal') -> default('es');
+            $table -> boolean('activo') -> default(true);
             $table->timestamps();
         });
     }

@@ -13,13 +13,13 @@ class Metaoficina extends Model
     protected $table = 'metaoficina';
 
     protected $fillable = [
-    'departamento_id',
-    'titulo',
-    'descripcion',
+    'titulo_meta',
+    'descripcion_meta',
     'valor_objetivo',
     'unidad',
     'fecha_inicio',
     'fecha_fin',
-    'estado'
+    'activo',
+    'oficina_id'
     ];
 }

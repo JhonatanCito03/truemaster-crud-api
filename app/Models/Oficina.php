@@ -14,6 +14,14 @@ class Oficina extends Model
 
     protected $fillable = [
         'nombre_oficina',
-        'municipio'
+        'codigo_oficina',
+        'direccion',
+        'telefono',
+        'email_contacto',
+        'responsable_id',
+        'horaro_atencion',
+        'activo',
+        'responsable_id',
+        'municipio_id'
     ];
 }

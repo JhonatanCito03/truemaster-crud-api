@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('empleado', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('age');
+            $table->string('nombre');
+            $table->string('edad');
             $table->string('email');
-            $table->string('globalScore');
+            $table->string('puntaje_global');
             $table->string('phone');
             $table->string('password');
             $table->string('rol');
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('empleados');
+        Schema::dropIfExists('empleado');
     }
 };

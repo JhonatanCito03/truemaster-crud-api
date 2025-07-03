@@ -13,6 +13,11 @@ class Region extends Model
 
     protected $fillable = [
         'nombre_region',
-        'zona'
+        'numero_region',
+        'zona',
+        'codigo_region',
+        'descripcion',
+        'activo',
+        'pais_id'
     ];
 }

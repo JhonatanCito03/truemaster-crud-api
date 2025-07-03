@@ -34,14 +34,14 @@ class metaoficinaController extends Controller
         $metaoficina = Metaoficina::all();
 
         $validator = Validator::make($request -> all(), [
-            'departamento_id' => 'required',
-            'titulo' => 'required',
-            'descripcion' => 'required',
+            'titulo_meta' => 'required|max:100',
+            'descripcion_meta' => 'required',
             'valor_objetivo' => 'required',
             'unidad' => 'required',
             'fecha_inicio' => 'required',
             'fecha_fin' => 'required',
-            'estado' => 'required'
+            'activo' => 'required',
+            'oficina_id' => 'required'
         ]);
 
         if($validator->fails()){
@@ -55,14 +55,14 @@ class metaoficinaController extends Controller
         }
 
         $metaoficina = Metaoficina::create([
-            'departamento_id' => $request ->departamento_id,
-            'titulo' => $request ->titulo,
-            'descripcion' => $request->descripcion,
-            'valor_objetivo' => $request->valor_objetivo,
-            'unidad' => $request->unidad,
-            'fecha_inicio' => $request->fecha_inicio,
-            'fecha_fin' => $request->fecha_fin,
-            'estado' => $request->estado
+        'titulo_meta' => $request -> titulo_meta,
+        'descripcion_meta' => $request -> descripcion_meta,
+        'valor_objetivo' => $request -> valor_objetivo,
+        'unidad' => $request -> unidad,
+        'fecha_inicio' => $request -> fecha_inicio,
+        'fecha_fin' => $request -> fecha_fin,
+        'activo' => $request -> activo,
+        'oficina_id' => $request -> oficina_id
         ]);
 
         if(!$metaoficina) {
@@ -135,14 +135,14 @@ class metaoficinaController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'departamento_id' => 'required',
-            'titulo' => 'required',
-            'descripcion' => 'required',
-            'valor_objetivo' => 'required',
-            'unidad' => 'required',
-            'fecha_inicio' => 'required',
-            'fecha_fin' => 'required',
-            'estado' => 'required'
+        'titulo_meta',
+        'descripcion_meta',
+        'valor_objetivo',
+        'unidad',
+        'fecha_inicio',
+        'fecha_fin',
+        'activo',
+        'oficina_id'
         ]);
 
         if($validator->fails()){

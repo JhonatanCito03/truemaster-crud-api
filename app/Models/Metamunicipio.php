@@ -12,7 +12,13 @@ class Metamunicipio extends Model
     protected $table = 'metamunicipio';
 
     protected $fillable = [
-    'valor_meta',
-    'fecha_inicio'
+    'titulo_meta',
+    'descripcion_meta',
+    'valor_objetivo',
+    'unidad',
+    'fecha_inicio',
+    'fecha_fin',
+    'activo',
+    'municipio_id'
     ];
 }
