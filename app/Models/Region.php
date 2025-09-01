@@ -15,7 +15,6 @@ class Region extends Model
         'nombre_region',
         'numero_region',
         'zona',
-        'codigo_region',
         'descripcion',
         'activo',
         'pais_id'

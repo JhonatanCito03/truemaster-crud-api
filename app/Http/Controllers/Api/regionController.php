@@ -63,8 +63,7 @@ class regionController extends Controller
             'nombre_region' => 'required|max:150',
             'numero_region' => 'required|unique:region',
             'zona' => 'required',
-            'codigo_region' => 'required',
-            'decripcion' => 'required',
+            'descripcion' => 'required',
             'activo' => 'required',
             'pais_id' => 'required'
         ]);
@@ -83,7 +82,6 @@ class regionController extends Controller
             'nombre_region' => $request -> nombre_region,
             'numero_region' => $request -> numero_region,
             'zona' => $request -> zona,
-            'codigo_region' => $request -> codigo_region,
             'decripcion' => $request -> decripcion,
             'activo' => $request -> activo,
             'pais_id' => $request -> pais_id
@@ -120,7 +118,6 @@ class regionController extends Controller
             'nombre_region' => 'required|max:150',
             'numero_region' => 'required|unique:region,numero_region,' . $id,
             'zona' => 'required',
-            'codigo_region' => 'required',
             'decripcion' => 'required',
             'activo' => 'required',
             'pais_id' => 'required'
@@ -136,7 +133,6 @@ class regionController extends Controller
         $region->nombre_region = $request -> nombre_region;
         $region -> numero_region = $request -> numero_region;
         $region -> zona = $request -> zona;
-        $region -> codigo_region = $request -> codigo_region;
         $region -> decripcion = $request -> decripcion;
         $region -> activo = $request -> activo;
         $region -> pais_id = $request -> pais_id;
@@ -166,7 +162,6 @@ class regionController extends Controller
             'nombre_region' => 'max:150',
             'numero_region' => 'unique:region,numero_region,' . $id,
             'zona',
-            'codigo_region',
             'decripcion',
             'activo',
             'pais_id'
@@ -189,9 +184,6 @@ class regionController extends Controller
         }
         if($request -> has('zona')){
             $region -> zona = $request -> zona;
-        }
-        if($request -> has('codigo_region')){
-            $region -> codigo_region = $request -> codigo_region;
         }
         if($request -> has('descripcion')){
             $region -> descripcion = $request -> descripcion;

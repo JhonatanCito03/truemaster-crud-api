@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('nombre_municipio',150);
             $table->string('codigo_municipio',10)->unique();
             $table->integer('poblacion');
-            $table->boolean('es_capital') -> default(false);
-            $table->boolean('activo') -> default(true);
-            $table->unsignedBigInteger('departamento_id');
-            $table->foreign('departamento_id')->references('id')->on('departamento')->onDelete('cascade');
+            $table->boolean('es_capital')->default(false);
+            $table->string('activo');
+            $table->unsignedBigInteger('region_id');
+            $table->foreign('region_id')->references('id')->on('region')->onDelete('cascade');
             $table->timestamps();
         });
     }

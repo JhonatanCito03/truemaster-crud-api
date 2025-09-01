@@ -13,14 +13,6 @@ class paisController extends Controller
     {
         $pais = Pais::all();
 
-        if(!$pais){
-        $data = [
-            'message' => 'Sin datos',
-            'status' => 404
-        ];
-        return response() -> json($data,404);
-        }
-
         $data = [
             'message' => 'Lista de paises:',
             'data' => $pais,
@@ -51,7 +43,7 @@ class paisController extends Controller
 
     public function store(Request $request)
     {
-        $pais = Pais::all();
+       // $pais = Pais::all();
 
         $validator = Validator::make($request -> all(),[
             'nombre_pais' => 'required|max:150',
@@ -83,17 +75,17 @@ class paisController extends Controller
         if(!$pais){
             $data = [
                 'message' => 'Error al crear el pais',
+                'errors' => $pais->getErrors(),
                 'status' => 404
             ];
-            return response() -> json($data,404);
+            return response() -> json($data,500);
         }
 
         $data = [
-            'message' => 'Pais creado correctamente',
             'data' => $pais,
             'status' => 200
         ];
-        return response() ->json($data);
+        return response() ->json($data, 200);
     }
 
     public function update(Request $request,$id)

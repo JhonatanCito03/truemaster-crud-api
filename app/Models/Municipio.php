@@ -18,6 +18,6 @@ class Municipio extends Model
         'poblacion',
         'es_capital',
         'activo',
-        'departamento_id'
+        'region_id'
     ];
 }

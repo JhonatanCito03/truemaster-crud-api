@@ -75,7 +75,7 @@ class municipioController extends Controller
             'poblacion' => 'required',
             'es_capital' => 'required',
             'activo' => 'required',
-            'departamento_id' => 'required'
+            'region_id' => 'required'
         ]);
 
         if($validator -> fails()){
@@ -93,7 +93,7 @@ class municipioController extends Controller
             'poblacion' => $request->poblacion,
             'es_capital' => $request->es_capital,
             'activo' => $request->activo,
-            'departamento_id' => $request->departamento_id,
+            'region_id' => $request->region_id,
         ]);
 
         if(!$municipio){
@@ -151,7 +151,7 @@ class municipioController extends Controller
             'poblacion' => 'required',
             'es_capital' => 'required',
             'activo' => 'required',
-            'departamento_id' => 'required'
+            'region_id' => 'required'
         ]);
 
         if($validator -> fails()){
@@ -168,7 +168,7 @@ class municipioController extends Controller
         $municipio -> poblacion = $request -> poblacion;
         $municipio -> es_capital = $request -> es_capital;
         $municipio -> activo = $request -> activo;
-        $municipio -> departamento_id = $request -> departamento_id;
+        $municipio -> region_id = $request -> region_id;
 
         $municipio -> save();
 
@@ -199,7 +199,7 @@ class municipioController extends Controller
             'poblacion',
             'es_capital',
             'activo',
-            'departamento_id'
+            'region_id'
         ]);
 
         if($validator -> fails()){
@@ -226,8 +226,8 @@ class municipioController extends Controller
         if($request -> has('activo')){
             $municipio -> activo = $request -> activo;
         }
-        if($request -> has('departamento_id')){
-            $municipio -> departamento_id = $request -> departamento_id;
+        if($request -> has('region_id')){
+            $municipio -> region_id = $request -> region_id;
         }
 
         $municipio -> save();
