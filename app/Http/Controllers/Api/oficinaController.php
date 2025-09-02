@@ -43,11 +43,11 @@ class oficinaController extends Controller
         'nombre_oficina' => 'required|max:150',
         'codigo_oficina' => 'required|max:10',
         'direccion' => 'required|max:250',
-        'telefono' => 'required|integer|min:6|max:20',
+        'telefono' => 'required|integer',
         'email_contacto' => 'required|email',
-        'horaro_atencion' => 'required',
+        'horario_atencion' => 'required',
         'activo' => 'required',
-        'responsable_id' => 'required|unique:oficina',
+        'responsable_id' => 'required',
         'municipio_id' => 'required'
         ]);
 
@@ -66,7 +66,7 @@ class oficinaController extends Controller
             'direccion' => $request -> direccion,
             'telefono' => $request -> telefono,
             'email_contacto' => $request -> email_contacto,
-            'horaro_atencion' => $request -> horaro_atencion,
+            'horario_atencion' => $request -> horario_atencion,
             'activo' => $request -> activo,
             'responsable_id' => $request -> responsable_id,
             'municipio_id' => $request -> municipio_id,
@@ -144,7 +144,7 @@ class oficinaController extends Controller
         'direccion' => 'required|max:250',
         'telefono' => 'required|integer|min:6|max:20',
         'email_contacto' => 'required|email',
-        'horaro_atencion' => 'required',
+        'horario_atencion' => 'required',
         'activo' => 'required',
         'responsable_id' => 'required|unique:oficina',
         'municipio_id' => 'required'
@@ -164,7 +164,7 @@ class oficinaController extends Controller
         $oficina -> direccion = $request -> direccion;
         $oficina -> telefono = $request -> telefono;
         $oficina -> email_contacto = $request -> email_contacto;
-        $oficina -> horaro_atencion = $request -> horaro_atencion;
+        $oficina -> horario_atencion = $request -> horario_atencion;
         $oficina -> activo = $request -> activo;
         $oficina -> responsable_id = $request -> responsable_id;
         $oficina -> municipio_id = $request -> municipio_id;
@@ -196,7 +196,7 @@ class oficinaController extends Controller
         'direccion',
         'telefono',
         'email_contacto' => 'email',
-        'horaro_atencion',
+        'horario_atencion',
         'activo',
         'responsable_id',
         'municipio_id' 
@@ -227,8 +227,8 @@ class oficinaController extends Controller
         if($request -> has('email_contacto')){
             $oficina -> email_contacto = $request -> email_contacto;
         }
-        if($request -> has('horaro_atencion')){
-            $oficina -> horaro_atencion = $request -> horaro_atencion;
+        if($request -> has('horario_atencion')){
+            $oficina -> horario_atencion = $request -> horario_atencion;
         }
         if($request -> has('activo')){
             $oficina -> activo = $request -> activo;

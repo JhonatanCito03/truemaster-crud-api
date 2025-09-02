@@ -18,11 +18,15 @@ return new class extends Migration
             $table -> string('direccion');
             $table -> bigInteger('telefono') -> unique();
             $table -> string('email_contacto');
-            $table->text('horario_atencion');
+            $table->string('horario_atencion', 200);
             $table->boolean('activo')->default(true);
             $table->unsignedBigInteger('municipio_id');
             $table->foreign('municipio_id')
             ->references('id')->on('municipio')
+            ->onDelete('cascade');
+            $table->unsignedBigInteger('responsable_id');
+            $table->foreign('responsable_id')
+            ->references('id')->on('empleado')
             ->onDelete('cascade');
             $table->timestamps();
         });

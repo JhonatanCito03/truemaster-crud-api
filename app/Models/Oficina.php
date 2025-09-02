@@ -19,7 +19,7 @@ class Oficina extends Model
         'telefono',
         'email_contacto',
         'responsable_id',
-        'horaro_atencion',
+        'horario_atencion',
         'activo',
         'responsable_id',
         'municipio_id'
