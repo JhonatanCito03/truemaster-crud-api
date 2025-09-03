@@ -12,6 +12,11 @@ use App\Http\Controllers\Api\municipioController;
 use App\Http\Controllers\Api\departamentoController;
 use App\Http\Controllers\Api\regionController;
 use App\Http\Controllers\Api\paisController;
+use App\Http\Controllers\Api\metaGerenciaOficinaController;
+use App\Http\Controllers\Api\metaGerenciaRegionalController;
+use App\Http\Controllers\Api\metaGerenciaZonalController;
+use App\Http\Controllers\Api\metaPresidenciaController;
+
 
 //empleado
 
@@ -152,3 +157,58 @@ Route::put('/pais/{id}',[paisController::class,'update']);
 Route::patch('/pais/{id}',[paisController::class,'updatePartial']);
 
 Route::delete('/pais/{id}', [paisController::class, 'delete']);
+//meta_presidencia
+
+Route::get('/meta_presidencia',[metaPresidenciaController::class, 'index']);
+
+Route::get('/meta_presidencia/{id}',[metaPresidenciaController::class, 'show']);
+
+Route::post('/meta_presidencia', [metaPresidenciaController::class, 'store']);
+
+Route::put('/meta_presidencia/{id}',[metaPresidenciaController::class,'update']);
+
+Route::patch('/meta_presidencia/{id}',[metaPresidenciaController::class,'updatePartial']);
+
+Route::delete('/meta_presidencia/{id}', [metaPresidenciaController::class, 'delete']);
+
+
+//meta_gerencia_regional
+
+Route::get('/meta_gerencia_regional',[metaGerenciaRegionalController::class, 'index']);
+
+Route::get('/meta_gerencia_regional/{id}',[metaGerenciaRegionalController::class, 'show']);
+
+Route::post('/meta_gerencia_regional', [metaGerenciaRegionalController::class, 'store']);
+
+Route::put('/meta_gerencia_regional/{id}',[metaGerenciaRegionalController::class,'update']);
+
+Route::patch('/meta_gerencia_regional/{id}',[metaGerenciaRegionalController::class,'updatePartial']);
+
+Route::delete('/meta_gerencia_regional/{id}', [metaGerenciaRegionalController::class, 'delete']);
+
+//meta_gerencia_zonal
+
+Route::get('/meta_gerencia_zonal',[metaGerenciaZonalController::class, 'index']);
+
+Route::get('/meta_gerencia_zonal/{id}',[metaGerenciaZonalController::class, 'show']);
+
+Route::post('/meta_gerencia_zonal', [metaGerenciaZonalController::class, 'store']);
+
+Route::put('/meta_gerencia_zonal/{id}',[metaGerenciaZonalController::class,'update']);
+
+Route::patch('/meta_gerencia_zonal/{id}',[metaGerenciaZonalController::class,'updatePartial']);
+
+Route::delete('/meta_gerencia_zonal/{id}', [metaGerenciaZonalController::class, 'delete']);
+//meta_gerencia_oficina
+
+Route::get('/meta_gerencia_oficina',[metaGerenciaoficinaController::class, 'index']);
+
+Route::get('/meta_gerencia_oficina/{id}',[metaGerenciaoficinaController::class, 'show']);
+
+Route::post('/meta_gerencia_oficina', [metaGerenciaoficinaController::class, 'store']);
+
+Route::put('/meta_gerencia_oficina/{id}',[metaGerenciaoficinaController::class,'update']);
+
+Route::patch('/meta_gerencia_oficina/{id}',[metaGerenciaoficinaController::class,'updatePartial']);
+
+Route::delete('/meta_gerencia_oficina/{id}', [metaGerenciaoficinaController::class, 'delete']);
