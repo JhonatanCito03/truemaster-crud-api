@@ -16,6 +16,7 @@ use App\Http\Controllers\Api\metaGerenciaOficinaController;
 use App\Http\Controllers\Api\metaGerenciaRegionalController;
 use App\Http\Controllers\Api\metaGerenciaZonalController;
 use App\Http\Controllers\Api\metaPresidenciaController;
+use App\Http\Controllers\Api\registroEjecucion;
 
 
 //empleado
@@ -212,3 +213,17 @@ Route::put('/meta_gerencia_oficina/{id}',[metaGerenciaoficinaController::class,'
 Route::patch('/meta_gerencia_oficina/{id}',[metaGerenciaoficinaController::class,'updatePartial']);
 
 Route::delete('/meta_gerencia_oficina/{id}', [metaGerenciaoficinaController::class, 'delete']);
+
+//registro_ejecucion
+
+Route::get('/registro_ejecucion',[registroEjecucion::class, 'index']);
+
+Route::get('/registro_ejecucion/{id}',[registroEjecucion::class, 'show']);
+
+Route::post('/registro_ejecucion', [registroEjecucion::class, 'store']);
+
+Route::put('/registro_ejecucion/{id}',[registroEjecucion::class,'update']);
+
+Route::patch('/registro_ejecucion/{id}',[registroEjecucion::class,'updatePartial']);
+
+Route::delete('/registro_ejecucion/{id}', [registroEjecucion::class, 'delete']);

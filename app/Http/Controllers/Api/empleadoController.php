@@ -40,7 +40,7 @@ class empleadoController extends Controller
         'rol' => 'required|max:255',
         'id_number' => 'max: 25|unique:empleado',
         'img' => 'required|max:255',
-        'region' => 'required|max:255',
+        'id_oficina' => 'required|max:255',
         ]);
 
         if($validator->fails()){
@@ -62,7 +62,7 @@ class empleadoController extends Controller
             'rol' => $request->rol,
             'id_number' => $request->id_number,
             'img' => $request->img,
-            'region' => $request->region,
+            'id_oficina' => $request->id_oficina,
         ]);
 
         if(!$empleado) {
@@ -138,7 +138,7 @@ class empleadoController extends Controller
         'rol' => 'required|max:255',
         'id_number' => 'max: 25|unique:empleado',
         'img' => 'required|max:255',
-        'region' => 'required|max:255',
+        'id_oficina' => 'required|max:255',
         ]);
 
         if($validator ->fails()){
@@ -158,7 +158,7 @@ class empleadoController extends Controller
         $empleado->password = $request->password;
         $empleado->rol = $request->rol;
         $empleado->img = $request->img;
-        $empleado->region = $request->region;
+        $empleado->id_oficina = $request->id_oficina;
         $empleado->save();
 
         $data = [
@@ -190,7 +190,7 @@ class empleadoController extends Controller
         'rol' => 'max:255',
         'id_number' => 'max:25|unique:empleado,id_number,' . $empleado->id,
         'img' => 'max:255',
-        'region' => 'max:255',
+        'id_oficina' => 'max:255',
         ]);
 
         if($validator ->fails()){
@@ -232,8 +232,8 @@ class empleadoController extends Controller
         if($request->has('img')){
             $empleado->img = $request->img;
         }
-        if($request->has('region')){
-            $empleado->region = $request->region;
+        if($request->has('id_oficina')){
+            $empleado->id_oficina = $request->id_oficina;
         }
         $empleado->save();
 

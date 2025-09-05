@@ -19,6 +19,6 @@ class Empleado extends Model
         'rol',
         'id_number',
         'img',
-        'region',
+        'id_oficina',
     ];
 }

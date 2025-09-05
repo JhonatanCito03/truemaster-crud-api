@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('rol');
             $table->string('img');
-            $table->string('region');
+            $table->string('id_oficina');
             $table->string('id_number');
             $table->timestamps();
         });

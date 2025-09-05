@@ -139,9 +139,9 @@ class MetaPresidenciaController extends Controller
         'descripcion_meta' => 'required|max:255',
         'valor_objetivo' => 'required|numeric',
         'valor_actual' => 'required|numeric',
-        'estado_meta' => 'required|in:activo,inactivo',
-        'creado_por' => 'required|exists:users,id',
-        'actualizado_por' => 'required|exists:users,id',
+        'estado_meta' => 'required',
+        'creado_por' => 'required',
+        'actualizado_por' => 'required',
         ]);
 
         if($validator -> fails()){
